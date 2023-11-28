@@ -72,5 +72,19 @@ GO
 
 SELECT * FROM equipe WHERE id = 3;
 
+/* savoir chef et membre*/
+SELECT 
+    e.nom AS equipe_nom,
+    p1.nom AS chef_nom,
+    p1.prenom AS chef_prenom,
+    p2.nom AS membre_nom,
+    p2.prenom AS membre_prenom
+FROM 
+    equipe e
+INNER JOIN 
+    personne p1 ON e.personne_id = p1.id
+INNER JOIN 
+    equipe_has_personne ehp ON e.id = ehp.equipe_id
+INNER JOIN 
+    personne p2 ON ehp.personne_id = p2.id
 
-SELECT * FROM equipe;
